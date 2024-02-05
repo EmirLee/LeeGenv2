@@ -46,16 +46,3 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 client.login(process.env.token || token);
-
-// Sunucu oluşturma ve proje aktivitesi sağlama.
-const express = require('express');
-const app = express();
-
-// Web sunucu
-app.get('/', (req, res) => {
-  res.sendStatus(200);
-});
-
-app.listen(port, () => {
-  console.log(`Sunucu 3000 numaralı bağlantı noktasında yürütülüyor.`);
-});
