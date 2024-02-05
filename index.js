@@ -50,7 +50,6 @@ client.login(process.env.token || token);
 // Sunucu oluşturma ve proje aktivitesi sağlama.
 const express = require('express');
 const app = express();
-const port = 3000;
 
 // Web sunucu
 app.get('/', (req, res) => {
