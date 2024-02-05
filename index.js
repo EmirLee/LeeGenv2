@@ -57,5 +57,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Sunucu ${port} numaralı bağlantı noktasında yürütülüyor.`);
+  console.log(`Sunucu 3000 numaralı bağlantı noktasında yürütülüyor.`);
 });
