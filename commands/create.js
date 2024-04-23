@@ -20,7 +20,7 @@ module.exports = {
 				.setDescription('Hizmet türü (ücretsiz veya premium)')
 				.setRequired(true)
 				.addChoices(
-					{ name: 'Ucretsiz', value: 'free' },
+					{ name: 'Ücretsiz', value: 'free' },
 					{ name: 'Premium', value: 'premium' },
 				)),
 
@@ -32,7 +32,7 @@ module.exports = {
 			const errorEmbed = new MessageEmbed()
 				.setColor(config.color.red)
 				.setTitle('İzniniz Yok!')
-				.setDescription('🛑 Bunu Sadece Yönetici Yapabilir')
+				.setDescription('🛑 Bu işlemi sadece yöneticiler yapabilir.')
 				.setFooter(interaction.user.tag, interaction.user.displayAvatarURL({ dynamic: true, size: 64 }))
 				.setTimestamp();
 			return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
@@ -41,8 +41,8 @@ module.exports = {
 		if (!service) {
 			const missingParamsEmbed = new MessageEmbed()
 				.setColor(config.color.red)
-				.setTitle('Gecersiz Parametreler!')
-				.setDescription('Bir hizmet adı belirtmeniz gerekir!')
+				.setTitle('Geçersiz Parametreler!')
+				.setDescription('Bir hizmet adı belirtmelisiniz.')
 				.setFooter(interaction.user.tag, interaction.user.displayAvatarURL({ dynamic: true, size: 64 }))
 				.setTimestamp();
 			return interaction.reply({ embeds: [missingParamsEmbed], ephemeral: true });
@@ -56,7 +56,7 @@ module.exports = {
 		} else {
 			const invalidTypeEmbed = new MessageEmbed()
 				.setColor(config.color.red)
-				.setTitle('Geçersiz servis türü!')
+				.setTitle('Geçersiz Hizmet Türü!')
 				.setDescription('Hizmet türü "ücretsiz" veya "premium" olmalıdır.')
 				.setFooter(interaction.user.tag, interaction.user.displayAvatarURL({ dynamic: true, size: 64 }))
 				.setTimestamp();
@@ -67,8 +67,8 @@ module.exports = {
 			await fs.writeFile(filePath, '');
 			const successEmbed = new MessageEmbed()
 				.setColor(config.color.green)
-				.setTitle('Servis Yaratıldı!')
-				.setDescription(`Yeni hizmet **${type}** \`${service}\` hizmeti oluşturuldu!`)
+				.setTitle('Hizmet Oluşturuldu!')
+				.setDescription(`Yeni **${type.toUpperCase()}** hizmet \`${service}\` başarıyla oluşturuldu!`)
 				.setFooter(interaction.user.tag, interaction.user.displayAvatarURL())
 				.setTimestamp();
 
