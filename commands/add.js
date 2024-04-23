@@ -16,7 +16,7 @@ module.exports = {
 				.setDescription('Servis türü (ücretsiz veya premium)')
 				.setRequired(true)
 				.addChoices(
-					{ name: 'Ucretsiz', value: 'free' },
+					{ name: 'Ücretsiz', value: 'free' },
 					{ name: 'Premium', value: 'premium' },
 				))
 		.addStringOption(option =>
@@ -36,8 +36,8 @@ module.exports = {
 		if (!interaction.member.permissions.has('MANAGE_CHANNELS')) {
 			const errorEmbed = new MessageEmbed()
 				.setColor(config.color.red)
-				.setTitle('İzniniz Yok!')
-				.setDescription('🛑 Sadece Admin Bunu Yapabilir!')
+				.setTitle('Hata!')
+				.setDescription('🛑 Yönetici iznine sahip değilsiniz!')
 				.setFooter(interaction.user.tag, interaction.user.displayAvatarURL({ dynamic: true, size: 64 }))
 				.setTimestamp();
 			return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
@@ -46,8 +46,8 @@ module.exports = {
 		if (!service || !account || (type !== 'free' && type !== 'premium')) {
 			const missingParamsEmbed = new MessageEmbed()
 				.setColor(config.color.red)
-				.setTitle('Eksik parametreler veya geçersiz tip!')
-				.setDescription('Bir servis, bir hesap ve geçerli bir tür (ücretsiz veya premium) belirtmeniz gerekir!')
+				.setTitle('Eksik Parametreler veya Geçersiz Tür!')
+				.setDescription('Bir servis, bir hesap ve geçerli bir tür (ücretsiz veya premium) belirtmeniz gerekiyor!')
 				.setFooter(interaction.user.tag, interaction.user.displayAvatarURL({ dynamic: true, size: 64 }))
 				.setTimestamp();
 			return interaction.reply({ embeds: [missingParamsEmbed], ephemeral: true });
@@ -68,8 +68,8 @@ module.exports = {
 
 			const successEmbed = new MessageEmbed()
 				.setColor(config.color.green)
-				.setTitle('Hesap Eklendi!')
-				.setDescription(`\`${account}\` hesabı \`${service}\` hizmetine **${type}** başarıyla eklendi.`)
+				.setTitle('Başarılı!')
+				.setDescription(`\`${account}\` hesabı \`${service}\` servisine **${type}** olarak başarıyla eklendi.`)
 				.setFooter(interaction.user.tag, interaction.user.displayAvatarURL())
 				.setTimestamp();
 
