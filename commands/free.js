@@ -89,15 +89,14 @@ module.exports = {
                 const embedMessage = new MessageEmbed()
                     .setColor(config.color.green)
                     .setTitle('Free hesap üretildi!')
-                    .addField('Service', `\`\`\`${service[0].toUpperCase()}${service.slice(1).toLowerCase()}\`\`\``, true)
-                    .addField('Account', `\`\`\`${generatedAccount}\`\`\``, true)
-                    .setImage(config.banner)
+                    .setDescription(`**Servis:** \`${service[0].toUpperCase()}${service.slice(1).toLowerCase()}\`\n**Hesap:** \`${generatedAccount}\``)
+                    .setThumbnail(config.banner)
                     .setTimestamp();
 
                 member.send({ embeds: [embedMessage] })
                     .catch(error => console.error(`Yerleştirme iletisi gönderilirken hata oluştu: ${error}`));
                 interaction.reply({
-                    content: `**DM'nizi kontrol edin ${member}!** __Eğer mesajı almazsanız, lütfen özel mesajınızın kilidini açın!`,
+                    content: `📬 **DM'nizi kontrol edin, ${member}!** __Eğer mesajı almazsanız, lütfen özel mesajınızın kilidini açın!__`,
                 });
 
                 generated.add(member.id);
