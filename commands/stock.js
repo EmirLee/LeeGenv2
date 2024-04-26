@@ -31,7 +31,7 @@ module.exports = {
 
 		embed.addField('Faydalı Bağlantılar', `[**Website**](${config.website}) [**Discord**](https://dsc.gg/2Rt43sFuGS)`);
 
-		interaction.reply({ embeds: [embed] });
+		await interaction.user.send({ embeds: [embed] });
 	},
 };
 
@@ -55,4 +55,4 @@ async function getServiceInfo(directory, stock) {
 		info.push(`**${service.replace('.txt', '')}:** \`${lines.length}\``);
 	}
 	return info.join('\n');
-}
+				}
